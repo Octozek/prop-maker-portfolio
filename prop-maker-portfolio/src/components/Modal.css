@@ -1,0 +1,109 @@
+/* Modal backdrop */
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0; /* Start hidden */
+    transition: opacity 0.3s ease; /* Smooth fade-in/out */
+  }
+  
+  .modal-backdrop.show {
+    opacity: 1; /* Show with fade-in effect */
+  }
+  
+  /* Modal container */
+  .modal {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 1000px;
+    max-height: 90%;
+    overflow-y: auto; /* Enable scrolling for overflow */
+    text-align: center;
+    position: relative;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    transform: scale(0.95); /* Start scaled down */
+    opacity: 0; /* Start hidden */
+    transition: opacity 0.3s ease, transform 0.3s ease; /* Smooth fade-in/scale-up */
+  }
+  
+  .modal.show {
+    opacity: 1; /* Show with fade-in effect */
+    transform: scale(1); /* Scale to full size */
+  }
+  
+  /* Main content container for image and description */
+  .modal-main-content {
+    display: flex;
+    justify-content: space-between; /* Space between the image and text */
+    align-items: flex-start;
+    gap: 20px;
+  }
+  
+  /* Main image container */
+  .modal-main-image-container {
+    flex: 1 1 60%; /* Main image takes up 60% of the available space */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-height: 400px; /* Consistent height */
+    overflow: hidden;
+  }
+  
+  .modal-main-image {
+    max-width: 100%; /* Ensure image scales within container width */
+    max-height: 100%; /* Ensure image scales within container height */
+    object-fit: contain; /* Preserve the image's aspect ratio */
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Description container */
+  .modal-description {
+    flex: 1 1 40%; /* Description takes up the remaining 40% */
+    text-align: left;
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.5;
+    overflow-wrap: break-word; /* Prevent long words from breaking layout */
+    word-break: break-word; /* Break long lines if necessary */
+    max-width: 100%; /* Allow text to take full width if it overflows */
+  }
+  
+  /* Grid layout for additional images (bottom thumbnails) */
+  .modal-images {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Smaller images in a grid */
+    gap: 10px;
+    padding: 10px 0;
+  }
+  
+  .modal-image-container {
+    text-align: center;
+    cursor: pointer; /* Indicate clickability */
+  }
+  
+  .modal-image-container img {
+    width: 100%;
+    height: 80px; /* Fixed small height for thumbnails */
+    object-fit: cover; /* Maintain aspect ratio while cropping */
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .modal-image-container img:hover {
+    transform: scale(1.1); /* Slight zoom on hover */
+    transition: transform 0.3s ease;
+  }
+  
