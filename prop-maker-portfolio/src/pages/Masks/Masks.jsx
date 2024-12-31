@@ -36,6 +36,7 @@ const Masks = () => {
           isOpen={!!selectedMask}
           onClose={closeModal}
           mainImage={selectedMask.mainImage}
+          mainImageComment={selectedMask.mainImageComment} // Pass the main image comment
           images={selectedMask.images}
         />
       )}
