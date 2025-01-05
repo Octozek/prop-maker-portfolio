@@ -19,12 +19,50 @@
   color: #1c4daa;
 }
 
+
+
+
+
+
 .header h2 {
-  margin: 0;
-  font-size: 1.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem; /* Space between dynamic and static text */
+  font-size: 1.5rem;
   font-weight: 300;
   color: #b0bec5;
+  white-space: nowrap; /* Prevent wrapping */
 }
+
+.dynamic-text {
+  display: inline-block;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #b0bec5; /* Same color as the static text */
+  transform-origin: center;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+  opacity: 1; /* Ensure the text is visible by default */
+  width: 6rem; /* Adjust this width to accommodate the longest word */
+  text-align: center; /* Center-align the dynamic text */
+}
+
+.dynamic-text.spin-out {
+  transform: rotateX(90deg); /* Spin out vertically */
+  opacity: 0;
+}
+
+.dynamic-text.spin-in {
+  transform: rotateX(0deg); /* Reset the rotation */
+  opacity: 1; /* Make sure it's visible */
+}
+
+
+
+
+
+
+
 
 .header nav {
   margin-top: 0.5rem;
@@ -41,12 +79,30 @@
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.header nav a:hover {
+.header nav a:hover,
+.header nav a.active {
   background-color: #1c4daa;
   color: #1a1a1a;
 }
 
 body {
-  margin-top: 100px; /* Adjust based on the header height */
+  margin: 0;
+  padding-top: 120px; /* Adjust based on the header height */
   font-family: 'Arial', sans-serif;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 0.5rem 0;
+  }
+
+  .header h1 {
+    font-size: 1.8rem;
+  }
+
+  .header nav a {
+    font-size: 1rem;
+    margin: 0 0.5rem;
+  }
 }

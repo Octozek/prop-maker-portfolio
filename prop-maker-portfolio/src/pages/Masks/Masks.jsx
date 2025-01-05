@@ -15,7 +15,6 @@ const Masks = () => {
   return (
     <div>
       <Header />
-      <h2>Masks</h2>
       {masksData.length > 0 ? (
         <div className="cards-container">
           {masksData.map((mask, index) => (
