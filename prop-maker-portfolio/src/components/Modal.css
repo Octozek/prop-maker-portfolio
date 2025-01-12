@@ -10,12 +10,12 @@
   justify-content: center;
   align-items: center;
   z-index: 1000;
-  opacity: 0; /* Start hidden */
-  transition: opacity 0.3s ease; /* Smooth fade-in/out */
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 .modal-backdrop.show {
-  opacity: 1; /* Show with fade-in effect */
+  opacity: 1;
 }
 
 /* Modal container */
@@ -26,49 +26,48 @@
   width: 90%;
   max-width: 1000px;
   max-height: 90%;
-  overflow-y: auto; /* Enable scrolling for overflow */
+  overflow-y: auto;
   text-align: center;
   position: relative;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
   display: flex;
   flex-direction: column;
   gap: 20px;
-  transform: scale(0.95); /* Start scaled down */
-  opacity: 0; /* Start hidden */
-  transition: opacity 0.3s ease, transform 0.3s ease; /* Smooth fade-in/scale-up */
+  transform: scale(0.95);
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 .modal.show {
-  opacity: 1; /* Show with fade-in effect */
-  transform: scale(1); /* Scale to full size */
+  opacity: 1;
+  transform: scale(1);
 }
 
-/* Main content container for image and description */
+/* Main content container */
 .modal-main-content {
   display: flex;
   gap: 20px;
   justify-content: space-between;
-  align-items: flex-start;
-  flex-wrap: nowrap; /* Prevent wrapping of content */
-  height: 70%; /* Allocate more height for main content */
+  align-items: stretch; /* Equal height for both sections */
+  flex-wrap: nowrap;
+  height: 70%;
 }
 
 /* Main image container */
 .modal-main-image-container {
-  flex: 0 0 60%; /* Image container takes up 60% of width */
-  max-width: 60%; /* Prevent growing beyond allocated space */
+  flex: 0 0 50%; /* Image takes 50% */
+  max-width: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  max-height: 100%; /* Match the height of the content */
   overflow: hidden;
-  border-right: 1px solid #ddd; /* Optional separator */
+  border-right: 1px solid #ddd;
 }
 
 .modal-main-image {
-  max-width: 100%; /* Ensure the image scales within container width */
-  max-height: 100%; /* Ensure the image scales within container height */
-  object-fit: contain; /* Preserve the image's aspect ratio */
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
@@ -76,59 +75,85 @@
 /* Magnifier */
 .magnifier {
   position: absolute;
-  width: 150px; /* Circle size */
+  width: 150px;
   height: 150px;
   border-radius: 50%;
   border: 2px solid rgba(0, 0, 0, 0.3);
-  pointer-events: none; /* Allow mouse events to pass through */
+  pointer-events: none;
   transform: translate(-50%, -50%);
   background-repeat: no-repeat;
-  display: none; /* Hidden by default */
+  display: none;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
-
-.modal-main-image-container.hide-cursor {
-  cursor: none; /* Hide the mouse pointer */
 }
 
 /* Description container */
 .modal-description {
-  flex: 0 0 40%; /* Text container takes up 40% of width */
-  max-width: 40%; /* Prevent growing beyond allocated space */
-  max-height: 100%; /* Match the height of the main content */
-  overflow-y: auto; /* Enable scrolling if text exceeds space */
+  flex: 0 0 50%; /* Text takes 50% */
+  max-width: 50%;
+  overflow-y: auto; /* Scroll when content is too long */
   text-align: left;
-  font-size: 1.2rem; /* Increased font size for better readability */
-  color: #333; /* Slightly darker for better contrast */
-  line-height: 1.8; /* Increased line height for readability */
-  padding: 15px; /* Add padding for better readability */
-  background-color: #f9f9f9; /* Optional background for contrast */
+  font-size: 1.1rem;
+  color: #333;
+  line-height: 1.6;
+  padding: 15px;
+  background-color: #f9f9f9;
   border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Optional for consistency */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Grid layout for additional images (bottom thumbnails) */
+/* Thumbnails */
 .modal-images {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Smaller images in a grid */
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   gap: 10px;
-  padding: 10px 0;
+  padding-top: 10px;
 }
 
 .modal-image-container {
-  text-align: center;
-  cursor: pointer; /* Indicate clickability */
+  cursor: pointer;
 }
 
 .modal-image-container img {
   width: 100%;
-  height: 60px; /* Reduced height for thumbnails */
-  object-fit: cover; /* Maintain aspect ratio while cropping */
+  height: 60px;
+  object-fit: cover;
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 .modal-image-container img:hover {
-  transform: scale(1.1); /* Slight zoom on hover */
+  transform: scale(1.1);
   transition: transform 0.3s ease;
+}
+
+/* 📱 Mobile-friendly layout */
+@media (max-width: 768px) {
+  .modal-main-content {
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+  }
+
+  .modal-main-image-container,
+  .modal-description {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .modal-main-image {
+    max-height: 300px;
+  }
+
+  .modal-description {
+    max-height: 200px;
+  }
+
+  .modal-images {
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  }
+
+  .modal-image-container img {
+    height: 50px;
+  }
 }
