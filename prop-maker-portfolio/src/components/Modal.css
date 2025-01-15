@@ -5,7 +5,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(30, 31, 34, 0.9); /* Darker backdrop */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -20,16 +20,16 @@
 
 /* Modal container */
 .modal {
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
+  background: #2b2d31; /* Discord dark gray */
+  padding: 24px;
+  border-radius: 12px;
   width: 90%;
   max-width: 1000px;
   max-height: 90%;
   overflow-y: auto;
   text-align: center;
   position: relative;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -48,20 +48,20 @@
   display: flex;
   gap: 20px;
   justify-content: space-between;
-  align-items: stretch; /* Equal height for both sections */
+  align-items: stretch;
   flex-wrap: nowrap;
   height: 70%;
 }
 
 /* Main image container */
 .modal-main-image-container {
-  flex: 0 0 50%; /* Image takes 50% */
+  flex: 0 0 50%;
   max-width: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  border-right: 1px solid #ddd;
+  border-right: 1px solid #40444b; /* Softer divider */
 }
 
 .modal-main-image {
@@ -69,7 +69,7 @@
   height: 100%;
   object-fit: contain;
   border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
 }
 
 /* Magnifier */
@@ -78,27 +78,27 @@
   width: 150px;
   height: 150px;
   border-radius: 50%;
-  border: 2px solid rgba(0, 0, 0, 0.3);
+  border: 2px solid rgba(255, 255, 255, 0.2);
   pointer-events: none;
   transform: translate(-50%, -50%);
   background-repeat: no-repeat;
   display: none;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6);
 }
 
 /* Description container */
 .modal-description {
-  flex: 0 0 50%; /* Text takes 50% */
+  flex: 0 0 50%;
   max-width: 50%;
-  overflow-y: auto; /* Scroll when content is too long */
+  overflow-y: auto;
   text-align: left;
-  font-size: 1.1rem;
-  color: #333;
+  font-size: 1rem;
+  color: #dcddde; /* Light gray text */
   line-height: 1.6;
-  padding: 15px;
-  background-color: #f9f9f9;
+  padding: 16px;
+  background-color: #1e1f22; /* Darker background */
   border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 /* Thumbnails */
@@ -117,13 +117,14 @@
   width: 100%;
   height: 60px;
   object-fit: cover;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .modal-image-container img:hover {
   transform: scale(1.1);
-  transition: transform 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
 }
 
 /* 📱 Mobile-friendly layout */

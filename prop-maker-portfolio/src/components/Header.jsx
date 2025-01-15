@@ -1,85 +1,149 @@
-import React, { useState, useEffect } from "react";
-import { NavLink, useLocation } from "react-router-dom";
-import "./Header.css";
+import React, { useState, useEffect, useRef } from "react";
+import { NavLink } from "react-router-dom";
 
 const Header = () => {
-  const location = useLocation();
-  const [dynamicText, setDynamicText] = useState("Props");
-  const [animationClass, setAnimationClass] = useState("");
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const dropdownRef = useRef(null);
+  const mobileMenuRef = useRef(null);
 
+  // Close dropdown and mobile menu when clicking outside
   useEffect(() => {
-    let timeout;
-
-    const updateText = () => {
-      // Determine the new text based on the route
-      switch (location.pathname) {
-        case "/masks":
-          return "Mask";
-        case "/helmets":
-          return "Helmets";
-        case "/sculptures":
-          return "Sculptures";
-        default:
-          return "Props";
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsDropdownOpen(false);
+      }
+      if (mobileMenuRef.current && !mobileMenuRef.current.contains(event.target)) {
+        setIsMobileMenuOpen(false);
       }
     };
-
-    const newText = updateText();
-
-    // Animate text out
-    setAnimationClass("spin-out");
-
-    // Wait for the animation to complete, then update text and animate in
-    timeout = setTimeout(() => {
-      setDynamicText(newText);
-      setAnimationClass("spin-in");
-
-      // Revert to "Props" after 2 seconds
-      setTimeout(() => {
-        setAnimationClass("spin-out");
-        setTimeout(() => {
-          setDynamicText("Props");
-          setAnimationClass("spin-in");
-        }, 500); // Match the animation duration
-      }, 2000);
-    }, 500);
-
-    return () => clearTimeout(timeout); // Cleanup timeout
-  }, [location]);
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   return (
-    <header className="header">
-      <h1>Ezekiel Owens</h1>
-      <h2>
-        <span className={`dynamic-text ${animationClass}`}>{dynamicText}</span>{" "}
-        <span className="static-text">Maker</span>
-      </h2>
-      <nav>
+    <header className="sticky top-0 w-full bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 shadow-md backdrop-blur-md z-50 border-b border-gray-700">
+      <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+        {/* Logo */}
         <NavLink
           to="/"
-          className={({ isActive }) => (isActive ? "active" : "")}
+          className="text-3xl font-bold text-blue-400 hover:text-blue-500 transition duration-300 tracking-wide"
         >
-          All
+          Ezekiel Owens
         </NavLink>
-        <NavLink
-          to="/masks"
-          className={({ isActive }) => (isActive ? "active" : "")}
+
+        {/* Desktop Navigation */}
+        <nav className="hidden md:flex items-center space-x-8">
+          <NavLink
+            to="/"
+            className={({ isActive }) =>
+              `nav-link ${
+                isActive ? "text-blue-500 font-bold underline" : "text-gray-300"
+              } hover:text-blue-400 transition`
+            }
+          >
+            Home
+          </NavLink>
+
+          {/* Dropdown Menu */}
+          <div className="relative" ref={dropdownRef}>
+            <button
+              onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+              className="nav-link flex items-center gap-1 hover:text-blue-400 transition"
+            >
+              Creations
+              <svg
+                className={`w-4 h-4 transform ${
+                  isDropdownOpen ? "rotate-180" : ""
+                } transition-transform`}
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
+            </button>
+
+            {isDropdownOpen && (
+              <div className="absolute bg-gray-800 text-white shadow-lg rounded-md mt-2 py-2 w-48 border border-gray-700 animate-fade-in">
+                {[
+                  { path: "/masks", label: "Masks" },
+                  { path: "/helmets", label: "Helmets" },
+                  { path: "/sculptures", label: "Sculptures" },
+                  { path: "/backdrops", label: "Backdrops" },
+                ].map((item) => (
+                  <NavLink
+                    key={item.path}
+                    to={item.path}
+                    className="block px-4 py-2 hover:bg-blue-600 rounded-md transition"
+                    onClick={() => setIsDropdownOpen(false)}
+                  >
+                    {item.label}
+                  </NavLink>
+                ))}
+              </div>
+            )}
+          </div>
+
+          <NavLink
+            to="/contact"
+            className="nav-link hover:text-blue-400 transition"
+          >
+            Contact
+          </NavLink>
+        </nav>
+
+        {/* Mobile Menu Button */}
+        <button
+          className="md:hidden text-gray-300 focus:outline-none"
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
-          Masks
-        </NavLink>
-        <NavLink
-          to="/helmets"
-          className={({ isActive }) => (isActive ? "active" : "")}
+          <svg
+            className="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d={isMobileMenuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"}
+            />
+          </svg>
+        </button>
+      </div>
+
+      {/* Mobile Navigation */}
+      {isMobileMenuOpen && (
+        <div
+          ref={mobileMenuRef}
+          className="md:hidden bg-gray-900 border-t border-gray-700 animate-slide-down"
         >
-          Helmets
-        </NavLink>
-        <NavLink
-          to="/sculptures"
-          className={({ isActive }) => (isActive ? "active" : "")}
-        >
-          Sculptures
-        </NavLink>
-      </nav>
+          {[
+            { path: "/", label: "Home" },
+            { path: "/masks", label: "Masks" },
+            { path: "/helmets", label: "Helmets" },
+            { path: "/sculptures", label: "Sculptures" },
+            { path: "/backdrops", label: "Backdrops" },
+            { path: "/contact", label: "Contact" },
+          ].map((item) => (
+            <NavLink
+              key={item.path}
+              to={item.path}
+              className="block px-6 py-3 text-gray-300 hover:bg-blue-600 hover:text-white transition"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              {item.label}
+            </NavLink>
+          ))}
+        </div>
+      )}
     </header>
   );
 };

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Header from "../../components/Header";
+import PageLayout from "../../components/PageLayout";
 import Card from "../../components/Card";
 import Modal from "../../components/Modal";
 import masksData from "./masksData";
@@ -7,16 +7,12 @@ import masksData from "./masksData";
 const Masks = () => {
   const [selectedMask, setSelectedMask] = useState(null);
 
-  // Close modal handler
-  const closeModal = () => {
-    setSelectedMask(null);
-  };
+  const closeModal = () => setSelectedMask(null);
 
   return (
-    <div>
-      <Header />
+    <PageLayout title="Masks Collection">
       {masksData.length > 0 ? (
-        <div className="cards-container">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 w-full">
           {masksData.map((mask, index) => (
             <Card
               key={index}
@@ -27,7 +23,9 @@ const Masks = () => {
           ))}
         </div>
       ) : (
-        <p>No masks available at the moment. Please check back later.</p>
+        <p className="text-gray-400 text-lg mt-10">
+          No masks available at the moment. Please check back later.
+        </p>
       )}
 
       {selectedMask && (
@@ -35,11 +33,11 @@ const Masks = () => {
           isOpen={!!selectedMask}
           onClose={closeModal}
           mainImage={selectedMask.mainImage}
-          mainImageComment={selectedMask.mainImageComment} // Pass the main image comment
+          mainImageComment={selectedMask.mainImageComment}
           images={selectedMask.images}
         />
       )}
-    </div>
+    </PageLayout>
   );
 };
 

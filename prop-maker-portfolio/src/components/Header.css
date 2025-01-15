@@ -1,146 +1,32 @@
-/* Header */
-.header {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background-color: #1a1a1a;
-  color: #f4f4f4;
-  text-align: center;
-  padding: 1rem 0;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
-  font-family: 'Arial', sans-serif;
+/* Navigation Links */
+.nav-link {
+  @apply text-gray-300 font-medium px-4 py-2 rounded-md transition-all duration-300 ease-in-out;
+  @apply hover:text-indigo-400 hover:bg-gray-800 hover:shadow-md;
 }
 
-/* Main Title */
-.header h1 {
-  margin: 0;
-  font-size: 2.2rem;
-  font-weight: bold;
-  letter-spacing: 1px;
-  color: #1c4daa;
+/* Active Navigation Link */
+.nav-link-active {
+  @apply text-indigo-400 font-semibold bg-gray-800 border-b-2 border-indigo-500 shadow-md;
 }
 
-/* Subheading with Dynamic Text */
-.header h2 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 1.5rem;
-  font-weight: 300;
-  color: #b0bec5;
-  white-space: nowrap;
+/* Dropdown Items */
+.dropdown-item {
+  @apply block px-5 py-2 text-gray-200 font-medium hover:bg-indigo-600 hover:text-white rounded-md transition-all duration-200 ease-in-out;
+  @apply cursor-pointer whitespace-nowrap;
 }
 
-/* Dynamic Text Animation */
-.dynamic-text {
-  display: inline-block;
-  font-size: 1.2rem;
-  font-weight: 500;
-  color: #b0bec5;
-  transform-origin: center;
-  transition: transform 0.5s ease, opacity 0.5s ease;
-  opacity: 1;
-  width: 6rem;
-  text-align: center;
+/* Dropdown Items (Active State) */
+.dropdown-item-active {
+  @apply bg-indigo-700 text-white font-semibold shadow-md;
 }
 
-.dynamic-text.spin-out {
-  transform: rotateX(90deg);
-  opacity: 0;
+/* Mobile Navigation Links */
+.mobile-nav-link {
+  @apply block px-6 py-3 text-gray-300 font-medium rounded-md transition-all duration-300 ease-in-out;
+  @apply hover:bg-indigo-600 hover:text-white;
 }
 
-.dynamic-text.spin-in {
-  transform: rotateX(0deg);
-  opacity: 1;
-}
-
-/* Navigation */
-.header nav {
-  margin-top: 0.5rem;
-}
-
-.header nav a {
-  color: #f4f4f4;
-  text-decoration: none;
-  margin: 0 1rem;
-  font-size: 1.2rem;
-  font-weight: 500;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.header nav a:hover,
-.header nav a.active {
-  background-color: #1c4daa;
-  color: #1a1a1a;
-}
-
-/* Page Body */
-body {
-  margin: 0;
-  padding-top: 120px;
-  font-family: 'Arial', sans-serif;
-  overflow-x: hidden;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .header {
-    padding: 0.5rem 0;
-  }
-
-  .header h1 {
-    font-size: 1.8rem;
-  }
-
-  .header h2 {
-    font-size: 1rem;
-  }
-
-  .dynamic-text {
-    font-size: 1rem;
-    width: 5rem;
-  }
-
-  .header nav a {
-    font-size: 0.9rem;
-    margin: 0 0.3rem;
-    padding: 0.3rem 0.6rem;
-  }
-}
-
-/* Mobile (Phones) */
-@media (max-width: 480px) {
-  .header {
-    flex-direction: column;
-    padding: 0.3rem 0;
-  }
-
-  .header h1 {
-    font-size: 1.5rem;
-  }
-
-  .header h2 {
-    font-size: 0.9rem;
-  }
-
-  .dynamic-text {
-    font-size: 0.9rem;
-    width: 4rem;
-  }
-
-  .header nav {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .header nav a {
-    font-size: 0.8rem;
-    padding: 0.3rem 0.5rem;
-    margin: 0.2rem;
-  }
+/* Mobile Navigation Active State */
+.mobile-nav-link-active {
+  @apply bg-indigo-700 text-white font-bold shadow-md;
 }
