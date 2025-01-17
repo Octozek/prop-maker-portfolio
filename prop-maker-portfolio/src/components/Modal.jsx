@@ -1,122 +1,61 @@
-import React, { useState, useEffect } from "react";
-import "./Modal.css";
+// Modal.jsx
+import React from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
-const Modal = ({ isOpen, onClose, mainImage, mainImageComment, images }) => {
-  const [isVisible, setIsVisible] = useState(false);
-  const [currentImage, setCurrentImage] = useState({
-    src: mainImage,
-    comment: mainImageComment || "Main image description", // Use passed comment or default
-  });
-  const [magnifierStyle, setMagnifierStyle] = useState({ display: "none" });
-
-  useEffect(() => {
-    if (isOpen) {
-      setTimeout(() => setIsVisible(true), 10);
-    } else {
-      setIsVisible(false);
-    }
-  }, [isOpen]);
-
-  useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (e.key === "Escape") {
-        setIsVisible(false);
-        setTimeout(() => onClose(), 300);
-      }
-    };
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [onClose]);
-
-  const handleBackdropClick = (e) => {
-    if (e.target.classList.contains("modal-backdrop")) {
-      setIsVisible(false);
-      setTimeout(() => onClose(), 300);
-    }
-  };
-
-  const handleMouseEnter = () => {
-    setMagnifierStyle((prev) => ({ ...prev, display: "block" }));
-  };
-
-  const handleMouseMove = (e) => {
-    const rect = e.target.getBoundingClientRect();
-    const offsetX = e.clientX - rect.left;
-    const offsetY = e.clientY - rect.top;
-    const xPercent = (offsetX / rect.width) * 100;
-    const yPercent = (offsetY / rect.height) * 100;
-
-    setMagnifierStyle({
-      display: "block",
-      backgroundImage: `url(${currentImage.src})`,
-      backgroundSize: `${rect.width * 4}px ${rect.height * 4}px`, // 4x zoom level
-      backgroundPosition: `${xPercent}% ${yPercent}%`,
-      left: `${offsetX - 75}px`,
-      top: `${offsetY - 75}px`,
-    });
-  };
-
-  const handleMouseLeave = () => {
-    setMagnifierStyle({ display: "none" });
-  };
-
-  const allImages = [
-    { src: mainImage, comment: mainImageComment || "Main image description" },
-    ...images.filter((img) => img.src !== mainImage), // Avoid duplicates
-  ];
-
+const Modal = ({ isOpen, onClose, mainImage, mainImageComment, images = [], title }) => {
   if (!isOpen) return null;
 
   return (
-    <div
-      className={`modal-backdrop ${isVisible ? "show" : ""}`}
-      onClick={handleBackdropClick}
-    >
-      <div
-        className={`modal ${isVisible ? "show" : ""}`}
-        role="dialog"
-        aria-labelledby="modal-title"
-        aria-describedby="modal-description"
-      >
-        {/* Main Content: Image and Description */}
-        <div className="modal-main-content">
-          <div
-            className="modal-main-image-container"
-            onMouseEnter={handleMouseEnter}
-            onMouseMove={handleMouseMove}
-            onMouseLeave={handleMouseLeave}
+    <AnimatePresence>
+      {isOpen && (
+        <motion.div
+          className="fixed inset-0 bg-black bg-opacity-95 backdrop-blur-lg z-50 flex items-start justify-center overflow-y-auto"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          onClick={onClose}
+        >
+          <motion.div
+            className="relative bg-transparent text-white w-full max-w-7xl mx-4 p-0 overflow-visible mt-10"
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.8, opacity: 0 }}
+            onClick={(e) => e.stopPropagation()}
           >
-            <img
-              src={currentImage.src}
-              alt="Main"
-              className="modal-main-image"
-              onError={(e) => (e.target.src = "/assets/fallback-image.jpg")}
-            />
-            <div className="magnifier" style={magnifierStyle}></div>
-          </div>
-          <div className="modal-main-description">
-            <p id="modal-description">{currentImage.comment}</p>
-          </div>
-        </div>
-        {/* Thumbnails Section */}
-        <div className="modal-images">
-          {allImages.map((item, index) => (
-            <div
-              key={index}
-              className="modal-image-container"
-              onClick={() => setCurrentImage(item)}
-              style={{ cursor: "pointer" }}
+            {/* Close Button */}
+            <button
+              onClick={onClose}
+              className="absolute top-6 right-6 text-gray-400 hover:text-white text-4xl"
             >
-              <img
-                src={item.src}
-                alt={`Thumbnail ${index + 1}`}
-                loading="lazy"
-              />
+              &times;
+            </button>
+
+            {/* Modal Header */}
+            <h2 className="text-5xl font-bold mb-8 text-center text-white drop-shadow-lg">
+              {title}
+            </h2>
+
+            {/* Scrollable Images and Descriptions */}
+            <div className="space-y-8 px-12 pb-12">
+              {[{ src: mainImage, comment: mainImageComment }, ...images].map((item, index) => (
+                <div key={index} className="space-y-4">
+                  <img
+                    src={item.src}
+                    alt={`Image ${index + 1}`}
+                    className="w-full object-contain rounded-lg shadow-xl max-h-[80vh]"
+                  />
+                  {item.comment && (
+                    <p className="text-gray-300 text-lg text-center italic">
+                      {item.comment}
+                    </p>
+                  )}
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-      </div>
-    </div>
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 };
 

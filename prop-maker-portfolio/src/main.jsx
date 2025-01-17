@@ -1,6 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
+
 import Main from "./pages/Main/Main";
 import All from "./pages/All/All";
 import Masks from "./pages/Masks/Masks";
@@ -9,24 +11,28 @@ import Sculptures from "./pages/Sculptures/Sculptures";
 import Backdrops from "./pages/Backdrops/Backdrops";
 import "./index.css";
 
-// Optional: Scroll to top on route change
-import ScrollToTop from "./components/ScrollToTop";
+// AnimatePresence wrapper for route transitions
+const AnimatedRoutes = () => {
+  const location = useLocation();
+
+  return (
+    <AnimatePresence mode="wait">
+      <Routes location={location} key={location.pathname}>
+        <Route path="/" element={<Main />} />
+        <Route path="/all" element={<All />} />
+        <Route path="/masks" element={<Masks />} />
+        <Route path="/helmets" element={<Helmets />} />
+        <Route path="/sculptures" element={<Sculptures />} />
+        <Route path="/backdrops" element={<Backdrops />} />
+      </Routes>
+    </AnimatePresence>
+  );
+};
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <Router>
-      <ScrollToTop />
-      <Routes>
-        <Route path="/" element={<Main />} />           {/* Home Page */}
-        <Route path="/all" element={<All />} />         {/* All Creations */}
-        <Route path="/masks" element={<Masks />} />     {/* Masks */}
-        <Route path="/helmets" element={<Helmets />} /> {/* Helmets */}
-        <Route path="/sculptures" element={<Sculptures />} /> {/* Sculptures */}
-        <Route path="/backdrops" element={<Backdrops />} />   {/* Backdrops */}
-        
-        {/* 404 Fallback Route */}
-        <Route path="*" element={<Navigate to="/" replace />} />
-      </Routes>
+      <AnimatedRoutes />
     </Router>
   </React.StrictMode>
 );
