@@ -47,6 +47,16 @@ const Modal = ({ isOpen, onClose, mainImage, mainImageComment, images = [], titl
                   {item.comment && (
                     <p className="text-gray-300 text-lg text-center italic">
                       {item.comment}
+                      {item.link && (
+                        <a
+                          href={item.link.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="block mt-2 text-blue-400 hover:text-blue-500 underline"
+                        >
+                          {item.link.text}
+                        </a>
+                      )}
                     </p>
                   )}
                 </div>
