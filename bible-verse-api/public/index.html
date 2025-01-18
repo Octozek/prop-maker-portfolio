@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Bible Verse</title>
+  <link rel="stylesheet" href="/styles.css"> <!-- Link to CSS -->
+</head>
+<body>
+  <div class="container">
+    <h1>Add a Bible Verse</h1>
+
+    <!-- Placeholder for the message -->
+    <div id="message"></div>
+
+    <!-- Form -->
+    <form action="/add-verse" method="POST">
+      <label for="reference">Verse Reference:</label><br>
+      <input type="text" id="reference" name="reference" required><br><br>
+
+      <label for="text">Verse Text:</label><br>
+      <textarea id="text" name="text" rows="4" required></textarea><br><br>
+
+      <label for="note">Add a Note (Optional):</label><br>
+      <textarea id="note" name="note" rows="3"></textarea><br><br>
+
+      <button type="submit">Add Verse</button>
+    </form>
+  </div>
+
+  <script>
+    // Display the message if present in the URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const message = urlParams.get('message');
+    const type = urlParams.get('type');
+
+    if (message) {
+      const messageDiv = document.getElementById('message');
+      messageDiv.className = `message ${type}`;
+      messageDiv.textContent = message;
+    }
+  </script>
+</body>
+</html>
