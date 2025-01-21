@@ -17,17 +17,18 @@ const Header = () => {
         setIsMobileMenuOpen(false);
       }
     };
+
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
   return (
-    <header className="sticky top-0 w-full bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 shadow-md backdrop-blur-md z-50 border-b border-gray-700">
+    <header className="sticky top-0 w-full bg-gray-850 text-gray-200 shadow-lg z-50 border-b border-gray-850">
       <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
         {/* Logo */}
         <NavLink
           to="/"
-          className="text-3xl font-bold text-blue-400 hover:text-blue-500 transition duration-300 tracking-wide"
+          className="text-3xl font-extrabold text-blue-400 hover:text-blue-500 transition duration-300 tracking-wider"
         >
           Ezekiel Owens
         </NavLink>
@@ -49,7 +50,7 @@ const Header = () => {
           <div className="relative" ref={dropdownRef}>
             <button
               onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-              className="nav-link flex items-center gap-1 hover:text-blue-400 transition"
+              className="nav-link flex items-center gap-1 text-gray-300 hover:text-blue-400 transition"
             >
               Creations
               <svg
@@ -70,7 +71,7 @@ const Header = () => {
             </button>
 
             {isDropdownOpen && (
-              <div className="absolute bg-gray-800 text-white shadow-lg rounded-md mt-2 py-2 w-48 border border-gray-700 animate-fade-in">
+              <div className="absolute bg-gray-800 text-gray-300 shadow-md rounded-lg mt-2 py-2 w-48 border border-gray-600">
                 {[
                   { path: "/masks", label: "Masks" },
                   { path: "/helmets", label: "Helmets" },
@@ -80,7 +81,7 @@ const Header = () => {
                   <NavLink
                     key={item.path}
                     to={item.path}
-                    className="block px-4 py-2 hover:bg-blue-600 rounded-md transition"
+                    className="block px-4 py-2 hover:bg-gray-600 hover:text-white rounded-md transition"
                     onClick={() => setIsDropdownOpen(false)}
                   >
                     {item.label}
@@ -136,7 +137,7 @@ const Header = () => {
             <NavLink
               key={item.path}
               to={item.path}
-              className="block px-6 py-3 text-gray-300 hover:bg-blue-600 hover:text-white transition"
+              className="block px-6 py-3 text-gray-300 hover:bg-blue-500 hover:text-white transition"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               {item.label}

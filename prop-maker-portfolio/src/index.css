@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 /* Ensure the background is always dark */
 html, body {
   @apply bg-gray-900 text-white;
@@ -13,7 +12,6 @@ html, body {
   overflow-x: hidden;
 }
 
-
 /* Root Styles */
 :root {
   font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -23,7 +21,7 @@ html, body {
   /* Dark color scheme */
   color-scheme: dark;
   color: #dcddde; /* Soft gray for text */
-  background-color: #2b2d31; /* Dark gray background */
+  background-color: #1e1f22; /* Dark gray background */
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -42,6 +40,42 @@ a:hover {
 /* Body Reset */
 body {
   @apply m-0 min-w-[320px] min-h-screen bg-[#1e1f22] text-gray-200 overflow-x-hidden;
+}
+
+/* Header Styles */
+header {
+  @apply sticky top-0 w-full bg-[#121212] shadow-md backdrop-blur-md z-50 border-b border-gray-700;
+}
+
+/* Navigation Links */
+.nav-link {
+  @apply text-gray-300 hover:text-blue-400 font-medium transition duration-300;
+}
+
+/* Active Navigation Link */
+.nav-link-active {
+  @apply text-blue-400 font-bold border-b-2 border-blue-500;
+}
+
+/* Dropdown Items */
+.dropdown-item {
+  @apply block px-5 py-2 text-gray-200 font-medium hover:bg-gray-800 hover:text-white rounded-md transition-all duration-200 ease-in-out;
+}
+
+/* Dropdown Items (Active State) */
+.dropdown-item-active {
+  @apply bg-gray-700 text-white font-semibold shadow-md;
+}
+
+/* Mobile Navigation Links */
+.mobile-nav-link {
+  @apply block px-6 py-3 text-gray-300 font-medium rounded-md transition-all duration-300 ease-in-out;
+  @apply hover:bg-gray-800 hover:text-blue-400;
+}
+
+/* Mobile Navigation Active State */
+.mobile-nav-link-active {
+  @apply bg-gray-700 text-white font-bold shadow-md;
 }
 
 /* Headings */
@@ -73,21 +107,6 @@ button:focus-visible {
 
 .card:hover {
   @apply shadow-xl bg-[#3c3f45];
-}
-
-/* Navigation Links */
-.nav-link {
-  @apply text-gray-300 hover:text-indigo-400 transition font-medium;
-}
-
-/* Dropdown Items */
-.dropdown-item {
-  @apply block px-4 py-2 hover:bg-gray-700 hover:text-white transition text-sm;
-}
-
-/* Mobile Navigation Links */
-.mobile-nav-link {
-  @apply block px-6 py-3 text-gray-300 hover:bg-gray-700 hover:text-white transition;
 }
 
 /* Light Theme */
