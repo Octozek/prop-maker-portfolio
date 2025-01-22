@@ -26,7 +26,7 @@ const Main = () => {
   }, []);
 
   // Unified container class for consistent alignment
-  const containerClass = "max-w-7xl mx-auto px-8";
+  const containerClass = "max-w-7xl mx-auto px-4 sm:px-8";
 
   return (
     <PageLayout>
@@ -46,63 +46,57 @@ const Main = () => {
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent"></div>
 
         {/* Content in front of the background */}
-        <div className="relative flex flex-col items-center justify-center text-center px-8 py-12 z-10 text-white space-y-8">
-          <h1 className="text-5xl font-bold text-blue-400 tracking-widest shadow-lg">
+        <div className="relative flex flex-col items-center justify-center text-center px-6 py-12 z-10 text-white space-y-6 sm:space-y-8">
+          <h1 className="text-4xl sm:text-5xl font-bold text-blue-400 tracking-widest shadow-lg">
             My Creative Journey
           </h1>
-          <p className="text-lg md:text-xl text-gray-300 max-w-4xl leading-relaxed">
+          <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-4xl leading-relaxed">
             Hi! I'm <span className="font-semibold text-blue-400">Ezekiel Owens</span>, a passionate prop maker and web developer. 
             From crafting intricate masks to building immersive websites, I bring imagination to life.
           </p>
           <img
             src={placeholderImage}
             alt="Ezekiel Owens"
-            className="w-40 h-40 md:w-48 md:h-48 object-cover rounded-full shadow-lg mb-4 border-4 border-blue-500"
+            className="w-28 h-28 sm:w-36 sm:h-36 md:w-48 md:h-48 object-cover rounded-full shadow-lg mb-4 border-4 border-blue-500"
           />
- 
         </div>
       </div>
 
       {/* About Section */}
-      <section className="py-16 bg-gray-900 text-gray-300">
+      <section className="py-12 sm:py-16 bg-gray-900 text-gray-300">
         <div className={containerClass}>
-          <h2 className="text-4xl font-bold text-white text-center mb-10">
+          <h2 className="text-3xl sm:text-4xl font-bold text-white text-center mb-8 sm:mb-10">
             About Me
           </h2>
-          <p className="text-lg leading-relaxed mb-6">
+          <p className="text-base sm:text-lg leading-relaxed mb-4 sm:mb-6">
             There’s something magical about holding a piece of another world in your hands. Whether it’s a mask from a legendary game or a sculpture that brings a fantastical creature to life, I strive to create pieces that make the impossible tangible.
           </p>
-          <p className="text-lg leading-relaxed">
+          <p className="text-base sm:text-lg leading-relaxed">
             Alongside my prop-making journey, I’m also a skilled web developer proficient in technologies like HTML, CSS, React, Node.js, Vite, Bootstrap, Tailwind CSS, and databases. Combining creativity and technical skills allows me to craft engaging and functional digital experiences.
           </p>
         </div>
       </section>
 
       {/* Gallery Section */}
-      <section className="py-16 bg-black text-gray-300">
+      <section className="py-12 sm:py-16 bg-black text-gray-300">
         <div className={containerClass}>
-          <h2 className="text-4xl font-bold text-white text-center mb-10">
+          <h2 className="text-3xl sm:text-4xl font-bold text-white text-center mb-8 sm:mb-10">
             My Work in Focus
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-            {[
-              { img: "/assets/masks/majoras-main.jpg", text: "Painting" },
-              { img: "/assets/sculptures/chozo-main.jpg", text: "Sculptures" },
-              { img: "/assets/backdrops/Chipped-Ridge-Stone-1.jpg", text: "Carving" },
-              { img: "/assets/sculptures/Project-2.png", text: "3D Modeling" },
-              { img: "/assets/main/IMG_5329.jpg", text: "Electronics Engineering" },
-              { img: "/assets/main/erreur-404.jpg", text: "Web Development" },
-            ].map((item, index) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-8">
+            {[...Array(6)].map((_, index) => (
               <div
                 key={index}
                 className="bg-gray-800 p-4 rounded-lg shadow-lg hover:scale-105 transform transition-all duration-300"
               >
                 <img
-                  src={item.img}
+                  src={placeholderImage}
                   alt={`Gallery Item ${index + 1}`}
-                  className="w-full h-48 object-cover rounded-md mb-4"
+                  className="w-full h-40 sm:h-48 object-cover rounded-md mb-4"
                 />
-                <p className="text-sm font-medium">{item.text}</p>
+                <p className="text-sm font-medium">
+                  A showcase of creativity and precision in every detail.
+                </p>
               </div>
             ))}
           </div>
@@ -110,15 +104,15 @@ const Main = () => {
       </section>
 
       {/* Additional Section */}
-      <section className="py-16 bg-gray-900 text-gray-300">
+      <section className="py-12 sm:py-16 bg-gray-900 text-gray-300">
         <div className={containerClass}>
-          <div className="flex flex-col items-center gap-8">
+          <div className="flex flex-col items-center gap-6 sm:gap-8">
             <img
-              src="/assets/main/img-of-zek-holdingrock.png"
+              src={placeholderImage}
               alt="Zek holding prop"
-              className="w-full max-w-xl object-cover rounded-lg shadow-lg"
+              className="w-full max-w-md sm:max-w-xl object-cover rounded-lg shadow-lg"
             />
-            <p className="text-lg text-center">
+            <p className="text-base sm:text-lg text-center">
               Each project I undertake is an opportunity to push the boundaries of creativity and precision. From concept to final product, every piece tells a story and reflects my passion for craftsmanship and innovation.
             </p>
           </div>
