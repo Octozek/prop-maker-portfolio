@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import PageLayout from "../../components/PageLayout";
-import placeholderImage from "/assets/img-placeholder.jpg";
+import placeholderImage from "/assets/main/img-of-zek.jpg";
 
 // Array of background images for the top section
 const backgroundImages = [
@@ -25,6 +25,9 @@ const Main = () => {
     return () => clearInterval(interval);
   }, []);
 
+  // Unified container class for consistent alignment
+  const containerClass = "max-w-7xl mx-auto px-8";
+
   return (
     <PageLayout>
       {/* Hero Section with cycling background */}
@@ -43,9 +46,9 @@ const Main = () => {
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent"></div>
 
         {/* Content in front of the background */}
-        <div className="relative flex flex-col items-center justify-center text-center px-6 py-12 z-10 text-white space-y-8">
+        <div className="relative flex flex-col items-center justify-center text-center px-8 py-12 z-10 text-white space-y-8">
           <h1 className="text-5xl font-bold text-blue-400 tracking-widest shadow-lg">
-            Step Into My Creative Journey
+            My Creative Journey
           </h1>
           <p className="text-lg md:text-xl text-gray-300 max-w-4xl leading-relaxed">
             Hi! I'm <span className="font-semibold text-blue-400">Ezekiel Owens</span>, a passionate prop maker and web developer. 
@@ -56,15 +59,13 @@ const Main = () => {
             alt="Ezekiel Owens"
             className="w-40 h-40 md:w-48 md:h-48 object-cover rounded-full shadow-lg mb-4 border-4 border-blue-500"
           />
-          <button className="px-8 py-3 bg-blue-600 text-white rounded-lg text-lg hover:bg-blue-700 shadow-lg transform hover:scale-105 transition-all duration-300">
-            Explore My Creations
-          </button>
+ 
         </div>
       </div>
 
       {/* About Section */}
       <section className="py-16 bg-gray-900 text-gray-300">
-        <div className="max-w-7xl mx-auto px-8">
+        <div className={containerClass}>
           <h2 className="text-4xl font-bold text-white text-center mb-10">
             About Me
           </h2>
@@ -79,44 +80,50 @@ const Main = () => {
 
       {/* Gallery Section */}
       <section className="py-16 bg-black text-gray-300">
-        <div className="max-w-7xl mx-auto px-8 text-center">
-          <h2 className="text-4xl font-bold text-white mb-10">
+        <div className={containerClass}>
+          <h2 className="text-4xl font-bold text-white text-center mb-10">
             My Work in Focus
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-            {[...Array(6)].map((_, index) => (
+            {[
+              { img: "/assets/masks/majoras-main.jpg", text: "Painting" },
+              { img: "/assets/sculptures/chozo-main.jpg", text: "Sculptures" },
+              { img: "/assets/backdrops/Chipped-Ridge-Stone-1.jpg", text: "Carving" },
+              { img: "/assets/sculptures/Project-2.png", text: "3D Modeling" },
+              { img: "/assets/main/IMG_5329.jpg", text: "Electronics Engineering" },
+              { img: "/assets/main/erreur-404.jpg", text: "Web Development" },
+            ].map((item, index) => (
               <div
                 key={index}
                 className="bg-gray-800 p-4 rounded-lg shadow-lg hover:scale-105 transform transition-all duration-300"
               >
                 <img
-                  src={placeholderImage}
-                  alt={`Prop ${index + 1}`}
+                  src={item.img}
+                  alt={`Gallery Item ${index + 1}`}
                   className="w-full h-48 object-cover rounded-md mb-4"
                 />
-                <p className="text-sm font-medium">
-                  A showcase of creativity and precision in every detail.
-                </p>
+                <p className="text-sm font-medium">{item.text}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Placeholder for Additional Content */}
+      {/* Additional Section */}
       <section className="py-16 bg-gray-900 text-gray-300">
-  <div className="max-w-7xl mx-auto px-8 flex flex-col items-center gap-8">
-    <img
-      src={placeholderImage}
-      alt="Prop example"
-      className="w-full max-w-xl object-cover rounded-lg shadow-lg"
-    />
-    <p className="text-lg text-center">
-      Each project I undertake is an opportunity to push the boundaries of creativity and precision. From concept to final product, every piece tells a story and reflects my passion for craftsmanship and innovation.
-    </p>
-  </div>
-</section>
-
+        <div className={containerClass}>
+          <div className="flex flex-col items-center gap-8">
+            <img
+              src="/assets/main/img-of-zek-holdingrock.png"
+              alt="Zek holding prop"
+              className="w-full max-w-xl object-cover rounded-lg shadow-lg"
+            />
+            <p className="text-lg text-center">
+              Each project I undertake is an opportunity to push the boundaries of creativity and precision. From concept to final product, every piece tells a story and reflects my passion for craftsmanship and innovation.
+            </p>
+          </div>
+        </div>
+      </section>
     </PageLayout>
   );
 };

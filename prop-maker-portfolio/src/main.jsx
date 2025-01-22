@@ -9,6 +9,7 @@ import Masks from "./pages/Masks/Masks";
 import Helmets from "./pages/Helmets/Helmets";
 import Sculptures from "./pages/Sculptures/Sculptures";
 import Backdrops from "./pages/Backdrops/Backdrops";
+import Contact from "./pages/Contact/Contact"; // Import the Contact page
 import "./index.css";
 
 // AnimatePresence wrapper for route transitions
@@ -24,6 +25,7 @@ const AnimatedRoutes = () => {
         <Route path="/helmets" element={<Helmets />} />
         <Route path="/sculptures" element={<Sculptures />} />
         <Route path="/backdrops" element={<Backdrops />} />
+        <Route path="/contact" element={<Contact />} /> {/* Add the Contact route */}
       </Routes>
     </AnimatePresence>
   );
