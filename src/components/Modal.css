@@ -1,0 +1,160 @@
+/* Modal backdrop */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(30, 31, 34, 0.9); /* Darker backdrop */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.modal-backdrop.show {
+  opacity: 1;
+}
+
+/* Modal container */
+.modal {
+  background: #2b2d31; /* Discord dark gray */
+  padding: 24px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 1000px;
+  max-height: 90%;
+  overflow-y: auto;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  transform: scale(0.95);
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.modal.show {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Main content container */
+.modal-main-content {
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  align-items: stretch;
+  flex-wrap: nowrap;
+  height: 70%;
+}
+
+/* Main image container */
+.modal-main-image-container {
+  flex: 0 0 50%;
+  max-width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  border-right: 1px solid #40444b; /* Softer divider */
+}
+
+.modal-main-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* Magnifier */
+.magnifier {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  background-repeat: no-repeat;
+  display: none;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6);
+}
+
+/* Description container */
+.modal-description {
+  flex: 0 0 50%;
+  max-width: 50%;
+  overflow-y: auto;
+  text-align: left;
+  font-size: 1rem;
+  color: #dcddde; /* Light gray text */
+  line-height: 1.6;
+  padding: 16px;
+  background-color: #1e1f22; /* Darker background */
+  border-radius: 8px;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Thumbnails */
+.modal-images {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 10px;
+  padding-top: 10px;
+}
+
+.modal-image-container {
+  cursor: pointer;
+}
+
+.modal-image-container img {
+  width: 100%;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.modal-image-container img:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+/* 📱 Mobile-friendly layout */
+@media (max-width: 768px) {
+  .modal-main-content {
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+  }
+
+  .modal-main-image-container,
+  .modal-description {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .modal-main-image {
+    max-height: 300px;
+  }
+
+  .modal-description {
+    max-height: 200px;
+  }
+
+  .modal-images {
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  }
+
+  .modal-image-container img {
+    height: 50px;
+  }
+}

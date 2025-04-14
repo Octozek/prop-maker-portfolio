@@ -1,0 +1,150 @@
+/* Root container with maximum width and centered layout */
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  overflow-x: hidden; /* Prevent horizontal overflow */
+  min-height: 100vh;  /* Ensure full viewport height */
+  display: flex;
+  flex-direction: column;
+  background-color: #2b2d31; /* Discord dark background */
+}
+
+/* Fix header overlap and ensure proper spacing */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', Arial, sans-serif;
+  line-height: 1.6;
+  background-color: #1e1f22; /* Discord body background */
+  color: #dcddde; /* Light gray text */
+  overflow-x: hidden;
+}
+
+/* Header fixed at the top */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #232428; /* Darker header background */
+  color: #ffffff;
+  z-index: 1000;
+  text-align: center;
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Subtle shadow */
+}
+
+/* Main content padding to prevent header overlap */
+main {
+  margin-top: 100px;
+  flex-grow: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  overflow-y: auto;
+  background-color: #2b2d31; /* Consistent background */
+}
+
+/* Logo styles */
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+
+.logo:hover {
+  filter: drop-shadow(0 0 2em #5865f2); /* Discord blurple glow */
+}
+
+/* Card styles */
+.card {
+  padding: 2em;
+  border-radius: 8px;
+  background-color: #313338; /* Discord card background */
+  color: #ffffff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 250px;
+  height: 350px;
+  border: 1px solid #40444b;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.6);
+}
+
+/* Card Container */
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Navigation Links */
+.nav-link {
+  color: #b9bbbe;
+  padding: 0.5rem 1rem;
+  font-weight: 500;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.nav-link:hover {
+  background-color: #40444b;
+  color: #ffffff;
+}
+
+/* Active Navigation Link */
+.nav-link-active {
+  background-color: #5865f2;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+/* Subtle hint for additional information */
+.read-the-docs {
+  color: #b9bbbe;
+}
+
+/* Button Styles */
+button {
+  padding: 0.75rem 1.5rem;
+  background-color: #5865f2;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background-color: #4752c4;
+  transform: scale(1.05);
+}
+
+button:focus {
+  outline: 2px solid #5865f2;
+  outline-offset: 2px;
+}
+
+/* Responsive Design Fixes */
+@media (max-width: 768px) {
+  main {
+    margin-top: 120px;
+  }
+
+  .card {
+    width: 200px;
+    height: 300px;
+  }
+}
