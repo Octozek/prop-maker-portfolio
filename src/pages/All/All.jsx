@@ -5,7 +5,7 @@ import Modal from "../../components/Modal";
 import masksData from "../Masks/masksData";
 import helmetsData from "../Helmets/helmetsData";
 import SculpturesData from "../Sculptures/SculpturesData";
-import backdropsData from "../Backdrops/backdropsData";
+import backdropsData from "../Backdrops/BackdropsData";
 
 const All = () => {
   const [selectedItem, setSelectedItem] = useState(null);
