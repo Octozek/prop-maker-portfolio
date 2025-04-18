@@ -55,26 +55,51 @@ const masksData = [
 
   {
     id: 5,
+    title: "Mask of Scents",
+    mainImage: "/assets/masks/Mask-of-Scents/Mask-of-Scents-main.jpg",
+    mainImageComment: "Here’s the finished Mask of Scents — fully painted, sealed, and ready for display. I modeled this piece based on the design from The Legend of Zelda: Majora’s Mask, then printed it on my resin printer to capture all the details.",
+    images: [
+      { id: 501, src: "/assets/masks/Mask-of-Scents/Mask-of-Scents-1.jpg", comment: "An angled view to show off the shape and character of the mask. I really focused on keeping the proportions true to the original game design." },
+      { id: 503, src: "/assets/masks/Mask-of-Scents/Mask-of-Scents-3.jpg", comment: "Still on the build plate — this is the raw resin print fresh out of the printer before any cleanup or curing." },
+      { id: 504, src: "/assets/masks/Mask-of-Scents/Mask-of-Scents-4.jpg", comment: "Here I’m holding the cured mask. It’s been cleaned and is ready for sanding and primer." },
+      { id: 505, src: "/assets/masks/Mask-of-Scents/Mask-of-Scents-5.jpg", comment: "Sanding the surface after priming to smooth everything out and get it ready for paint and finishing." },
+    ],
+  },
+
+  {
+    id: 6,
     title: "Goron",
     mainImage: "/assets/masks/Goron-main.jpg",
     mainImageComment: "Here’s my Goron Mask from The Legend of Zelda: Majora’s Mask. I designed and modeled this one myself before printing it on my resin printer. After cleaning and fully curing the print, I started working on the surface texture to match the rocky look of the Goron race.",
     images: [
-      { id: 501, src: "/assets/masks/Goron-2.jpg", comment: "This shot shows the depth and texture a bit better — I used a textured paint over the mask to give it a rough, stone-like surface. Once that dried, I went in with the airbrush to lay down the base color and added shading to bring out the facial features." },
-      { id: 502, src: "/assets/masks/Goron-3D.jpg", comment: "Here’s the full 3D model I created for this mask before printing. After all the paintwork was done, I sealed the physical piece with a clear coat to protect the texture and lock in the finish. It’s got that perfect worn rock feel, just like a Goron should." }
+      { id: 601, src: "/assets/masks/Goron-2.jpg", comment: "This shot shows the depth and texture a bit better — I used a textured paint over the mask to give it a rough, stone-like surface. Once that dried, I went in with the airbrush to lay down the base color and added shading to bring out the facial features." },
+      { id: 602, src: "/assets/masks/Goron-3D.jpg", comment: "Here’s the full 3D model I created for this mask before printing. After all the paintwork was done, I sealed the physical piece with a clear coat to protect the texture and lock in the finish. It’s got that perfect worn rock feel, just like a Goron should." }
+    ]
+  },
+
+  {
+    id: 7,
+    title: "Blast Mask",
+    mainImage: "/assets/masks/Blast-Mask/Blast-Mask-main.JPG",
+    mainImageComment: "Here’s my Goron Mask from The Legend of Zelda: Majora’s Mask. I designed and modeled this one myself before printing it on my resin printer. After cleaning and fully curing the print, I started working on the surface texture to match the rocky look of the Goron race.",
+    images: [
+      { id: 701, src: "/assets/masks/Blast-Mask/Blast-Mask-1.JPG", comment: "" },
+      { id: 702, src: "/assets/masks/Blast-Mask/Blast-Mask-2.JPG", comment: "" },
+      { id: 703, src: "/assets/masks/Blast-Mask/Blast-Mask-3.JPG", comment: "" },
     ]
   },
   
 
   {
-    id: 6,
+    id: 8,
     title: "Deathgun",
     mainImage: "/assets/masks/deathgun-main.jpg",
     mainImageComment: "This is my custom Death Gun Mask from Sword Art Online. I printed the mask using my resin printer, then cleaned and sanded it down to a smooth finish. After that, I primed it with black paint to get a solid base coat before moving on to the weathering.",
     images: [
-      { id: 601, src: "/assets/masks/deathgun-1.jpg", comment: "After priming, I drybrushed a metallic paint across the surface to give it that worn metal look — not too clean, just the right amount of battle-worn. It picks up great detail across the mask’s raised edges and texture." },
-      { id: 602, src: "/assets/masks/deathgun-2.jpg", comment: "This side view shows the alternate black lens setup. I made the lenses from thin plastic, then wrapped them with a red or black sunglass tint depending on the client’s preference. They can swap out whichever color they like best." },
-      { id: 603, src: "/assets/masks/deathgun-3.jpg", comment: "A closer look at the worn, metallic finish that gives the mask a battle-worn appearance." },
-      { id: 604, src: "/assets/masks/deathgun-3D.jpg", comment: "Here’s the full 3D model used to make the mask, designed by FerreusVeritas. Awesome detailing in the base mesh helped the paintwork really stand out.",
+      { id: 801, src: "/assets/masks/deathgun-1.jpg", comment: "After priming, I drybrushed a metallic paint across the surface to give it that worn metal look — not too clean, just the right amount of battle-worn. It picks up great detail across the mask’s raised edges and texture." },
+      { id: 802, src: "/assets/masks/deathgun-2.jpg", comment: "This side view shows the alternate black lens setup. I made the lenses from thin plastic, then wrapped them with a red or black sunglass tint depending on the client’s preference. They can swap out whichever color they like best." },
+      { id: 803, src: "/assets/masks/deathgun-3.jpg", comment: "A closer look at the worn, metallic finish that gives the mask a battle-worn appearance." },
+      { id: 804, src: "/assets/masks/deathgun-3D.jpg", comment: "Here’s the full 3D model used to make the mask, designed by FerreusVeritas. Awesome detailing in the base mesh helped the paintwork really stand out.",
         link: { url: "https://www.thingiverse.com/thing:525610", text: "Thingiverse" }
       }
     ],
@@ -82,14 +107,21 @@ const masksData = [
   
 
   {
-    id: 7,
+    id: 9,
     title: "Labyrinth",
-    mainImage: "/assets/masks/labyrinth-main.jpg",
-    mainImageComment: "This is my custom Jareth Mask from Labyrinth. I modeled it from scratch, keeping true to the elegant and mysterious look from the film. After printing it in resin and curing it, I carefully cleaned the surface to prep it for sanding.",
+    mainImage: "/assets/masks/labyrinth/labyrinth-main.jpg",
+    mainImageComment: "Here’s the front view of the Jareth Mask from Labyrinth. I 3D modeled this piece to match the original as closely as possible, aiming for screen-accurate detail throughout the design. It’s been printed, cleaned, and is ready for finishing.",
     images: [
-      { id: 701, src: "/assets/masks/labyrinth-1.jpg", comment: "I sanded the entire mask smooth to remove any print lines or imperfections, making sure the final result would be super clean. The shape of the mask really comes through here — subtle, sharp, and sleek." },
-      { id: 702, src: "/assets/masks/labyrinth-2.jpg", comment: "Once prepped, I used an airbrush to apply even coats of paint, building up soft tones and shadows to give it depth. The smooth surface helped the paint lay down flawlessly, capturing that crisp, theatrical vibe the mask is known for." },
-      { id: 703, src: "/assets/masks/labyrinth-3.jpg", comment: "To finish it off, I applied a clear gloss coat to seal the paint and give the mask a polished, display-quality finish. The gloss also highlights all the sculpted details and gives it that professional, prop-ready look." },
+      { id: 901, src: "/assets/masks/labyrinth/labyrinth-1.jpg", comment: "A close-up to highlight the sculpted details, especially around the eyes and facial structure." },
+      { id: 902, src: "/assets/masks/labyrinth/labyrinth-2.jpg", comment: "A look at the back of the print — fully shaped and cleaned up for a smooth, wearable fit." },
+      { id: 903, src: "/assets/masks/labyrinth/labyrinth-3.jpg", comment: "Shown next to a brick and a soup can for scale — this shot gives a sense of its real-world size and presence." },
+      { id: 904, src: "/assets/masks/labyrinth/labyrinth-4.jpg", comment: "Here I’m holding the print before cleanup is complete. Some supports are still attached and ready to be removed." },
+      { id: 905, src: "/assets/masks/labyrinth/labyrinth-5.jpg", comment: "Test fitting the horns to make sure everything lines up properly before final assembly." },
+      { id: 906, src: "/assets/masks/labyrinth/labyrinth-6.jpg", comment: "Holding the mask in front of a human face plate I made — this gives a quick preview of how it will look when worn." },
+      { id: 907, src: "/assets/masks/labyrinth/labyrinth-7.png", comment: "This is the 3D model in my design environment, with the horns positioned alongside the mask. I kept them separate for easier and cleaner printing — they’re designed to click into place after post-processing." },
+      { id: 908, src: "/assets/masks/labyrinth/labyrinth-8.png", comment: "Here’s the full digital model with the horns in place. This view helped me finalize the overall shape and proportions before starting the print." },
+
+
     ],
   },
 
